@@ -1,9 +1,10 @@
 'use strict';
+const productList = require('./mock/productList.js');
 
-module.exports.hello = async (event) => {
+module.exports.products = async () => {
   return {
     statusCode: 200,
-    body: JSON.stringify({ "Message": "Hello" }),
+    body: JSON.stringify(productList),
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true,

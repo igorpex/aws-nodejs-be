@@ -24,7 +24,7 @@ provider:
   name: aws
   runtime: nodejs16.x
   stage: dev
-  region: us-east-1
+  region: eu-west-1
 
 # you can add statements to the Lambda function's IAM Role here
 #  iam:
@@ -61,8 +61,23 @@ functions:
     handler: handler.hello
     events:
       - http:
+          path: hello
+          method: get
+          cors: true
+  products:
+    handler: products.products
+    events:
+      - http:
           path: products
           method: get
+          cors: true
+  productById:
+    handler: productById.productById
+    events:
+      - http:
+          path: products/{productId}
+          method: get
+          cors: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
