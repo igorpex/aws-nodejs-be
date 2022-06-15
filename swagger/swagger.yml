@@ -1,0 +1,54 @@
+paths:
+  /products:
+    get:
+      summary: Returns an array of all products.
+      responses:
+        '200':
+          description: A products array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {/products/{productId}}
+  /products/{productId}:
+    get:
+      summary: Returns a product by ID.
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: The ID of the product to return.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: A product object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 
+                  count: 
+                    type: integer
+                    format: int64
+                    example: 10
+                  price: 
+                    type: integer
+                    format: int64
+                    example: 2900
+                  title:
+                    type: string
+                    example: Flying car
+                  description: 
+                    type: string
+                    example: The Flying Ford Anglia was used on 3 August 1992 by Fred, George, and Ron Weasley to rescue Harry Potter, who was locked up in his room at the Dursleys' and had been unable to receive any mail from the Wizarding community as a result of Dobby's attempts to protect him.
+                  imageurl: 
+                    type: string,
+                    example: https://picsum.photos/id/1071/300/200
+        '404':
+          description: Product not found.
