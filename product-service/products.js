@@ -1,5 +1,5 @@
 'use strict';
-const productList = require('./mock/productList.js');
+const productList = require('./mock/productList.js').productList;
 
 module.exports.products = async () => {
   return {
