@@ -7,6 +7,8 @@ import hello from '@functions/hello';
 import products from '@functions/products';
 import productById from '@functions/productById';
 import postProduct from '@functions/postProduct';
+import putProduct from '@functions/putProduct';
+import deleteProduct from '@functions/deleteProduct';
 
 const serverlessConfiguration: AWS = {
   service: 'product-service-ts',
@@ -32,7 +34,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello, products, productById, postProduct },
+  functions: { hello, products, productById, postProduct, putProduct, deleteProduct },
   package: { individually: true },
   custom: {
     esbuild: {
