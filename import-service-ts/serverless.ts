@@ -1,6 +1,9 @@
 import type { AWS } from '@serverless/typescript';
+import 'dotenv/config';
+const BUCKET = process.env.BUCKET;
 
 import importFileParser from '@functions/importFileParser';
+import importProductsFile from '@functions/importProductsFile';
 
 const serverlessConfiguration: AWS = {
   service: 'import-service-ts',
@@ -8,7 +11,21 @@ const serverlessConfiguration: AWS = {
   plugins: ['serverless-esbuild'],
   provider: {
     name: 'aws',
-    runtime: 'nodejs14.x',
+    runtime: 'nodejs16.x',
+    region: 'eu-west-1',
+    stage: 'dev',
+    iamRoleStatements: [
+      {
+        Effect: 'Allow',
+        Action: 's3:ListBucket',
+        Resource: `arn:aws:s3:::${BUCKET}`,
+      },
+      {
+        Effect: 'Allow',
+        Action: 's3:*',
+        Resource: `arn:aws:s3:::${BUCKET}/*`
+      }
+    ],
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -19,7 +36,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { importFileParser },
+  functions: { importProductsFile, importFileParser },
   package: { individually: true },
   custom: {
     esbuild: {
@@ -27,7 +44,7 @@ const serverlessConfiguration: AWS = {
       minify: false,
       sourcemap: true,
       exclude: ['aws-sdk'],
-      target: 'node14',
+      target: 'node16',
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,

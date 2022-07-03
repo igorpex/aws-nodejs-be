@@ -1,14 +1,16 @@
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import { formatJSONResponse } from '@libs/api-gateway';
+// import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
+// import { formatJSONResponse } from '@libs/api-gateway';
 import { middyfy } from '@libs/lambda';
+import { Handler, S3Event } from 'aws-lambda';
+import { InvokeAsyncResponse } from 'aws-sdk/clients/lambda';
 
-import schema from './schema';
+// import schema from './schema';
 
-const importFileParser: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
-  return formatJSONResponse({
-    message: `Hello ${event.body.name}, welcome to the exciting Serverless world!`,
-    event,
-  });
+const importFileParser: Handler = async (event: S3Event): Promise<InvokeAsyncResponse> => {
+  console.log(`New object created. Event: ${event}`);
+  return {
+    Status: 202,
+  };
 };
 
 export const main = middyfy(importFileParser);
