@@ -1,7 +1,7 @@
 export default {
-  type: "object",
-  properties: {
-    name: { type: 'string' }
+  parameters: {
+    querystrings: {
+      name: true,
+    },
   },
-  required: ['name']
 } as const;
