@@ -1,0 +1,53 @@
+[
+    "Access-Control-Allow-Origin",
+    "Access-Control-Allow-Methods",
+    "x-amz-server-side-encryption",
+    "x-amz-request-id",
+    "x-amz-id-2",
+    "Date",
+    "Etag",
+    "Server",
+    "Content-Length",
+    "connection",
+    "x-amz-security-token",
+    "Content-Type",
+    "Vary",
+    "Transfer-Encoding"
+]
+
+
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "HEAD",
+            "PUT",
+            "POST"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [],
+        "MaxAgeSeconds": 3000
+    }
+]
+// working (in Chrome)
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "HEAD",
+            "PUT",
+            "POST"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]
