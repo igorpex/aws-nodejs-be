@@ -1,10 +1,12 @@
 import type { AWS } from '@serverless/typescript';
 import 'dotenv/config';
-const BUCKET = process.env.BUCKET;
-// const SQS_URL = process.env.SQS_URL;
+// const BUCKET = process.env.BUCKET;
+const BUCKET = 'node-in-aws-catalog2'
+const QUEUE_NAME = 'catalogItemsQueue';
 
 import importFileParser from '@functions/importFileParser';
 import importProductsFile from '@functions/importProductsFile';
+import catalogBatchProcess from '@functions/catalogBatchProcess';
 
 const serverlessConfiguration: AWS = {
   service: 'import-service-ts',
@@ -30,6 +32,11 @@ const serverlessConfiguration: AWS = {
         Effect: 'Allow',
         Action: 'sqs:*',
         Resource: { 'Fn::GetAtt': ['SQSQueue', 'Arn'] }
+      },
+      {
+        Effect: 'Allow',
+        Action: 'sns:*',
+        Resource: { 'Ref': 'SNSTopic' },
       }
     ],
     apiGateway: {
@@ -40,19 +47,21 @@ const serverlessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
       BUCKET,
-      SQS_URL: { 'Fn::GetAtt': ['SQSQueue', 'QueueUrl'] },
+      // SQS_URL: { 'Fn::GetAtt': ['SQSQueue', 'QueueUrl'] },
+      SQS_URL: { 'Ref': 'SQSQueue' },
       SQS_NAME: { 'Fn::GetAtt': ['SQSQueue', 'QueueName'] },
       SQS_ARN: { 'Fn::GetAtt': ['SQSQueue', 'Arn'] },
+      SNS_ARN: { 'Ref': 'SNSTopic' },
     },
   },
   // import the function via paths
-  functions: { importProductsFile, importFileParser },
+  functions: { importProductsFile, importFileParser, catalogBatchProcess },
   resources: {
     Resources: {
       SQSQueue: {
         Type: 'AWS::SQS::Queue',
         Properties: {
-          QueueName: 'import-service-ts-queue',
+          QueueName: QUEUE_NAME,
         }
       },
       SNSTopic: {
@@ -66,7 +75,7 @@ const serverlessConfiguration: AWS = {
         Properties: {
           Endpoint: 'igor.bogdanov@gmail.com',
           Protocol: 'email',
-          TopicArn: { 'Fn::GetAtt': ['SNSTopic', 'Arn'] },
+          TopicArn: { 'Ref': 'SNSTopic' },
         }
       }
     }
