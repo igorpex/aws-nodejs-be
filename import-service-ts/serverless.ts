@@ -74,6 +74,37 @@ const serverlessConfiguration: AWS = {
         Type: 'AWS::SNS::Subscription',
         Properties: {
           Endpoint: 'igor.bogdanov@gmail.com',
+          FilterPolicy: {
+            "priceCategory": [
+              "very good"
+            ]
+          },
+          Protocol: 'email',
+          TopicArn: { 'Ref': 'SNSTopic' },
+        }
+      },
+      SNSSubscription2: {
+        Type: 'AWS::SNS::Subscription',
+        Properties: {
+          Endpoint: 'sns-email-1@mailforspam.com',
+          FilterPolicy: {
+            "priceCategory": [
+              "good"
+            ]
+          },
+          Protocol: 'email',
+          TopicArn: { 'Ref': 'SNSTopic' },
+        }
+      },
+      SNSSubscription3: {
+        Type: 'AWS::SNS::Subscription',
+        Properties: {
+          Endpoint: 'sns-email-2@mailforspam.com',
+          FilterPolicy: {
+            "priceCategory": [
+              "bad"
+            ]
+          },
           Protocol: 'email',
           TopicArn: { 'Ref': 'SNSTopic' },
         }

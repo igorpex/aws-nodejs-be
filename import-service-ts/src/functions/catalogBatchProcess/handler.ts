@@ -9,17 +9,34 @@ const catalogBatchProcess: Handler = async (event: SQSEvent): Promise<InvokeAsyn
   const SNS_ARN = process.env.SNS_ARN;
   console.log('####SNS_ARN:', SNS_ARN);
 
-  const products = event.Records.map(({ body }) => body);
+  const products = event.Records.map(({ body }) => JSON.parse(body));
   console.log('####Products received from Queue:', products);
   const sns = new SNS({ region: 'eu-west-1' });
+  let len = products.length;
+  for (let i = 0; i < len; i++) {
+    const product = products[i];
+    let priceCategory: string;
+    if (product.price <= 200) {
+      priceCategory = 'very good'
+    } else if (product.price <= 500) {
+      priceCategory = 'good'
+    } else {
+      priceCategory = 'bad'
+    }
+    console.log('####Product:', product, ' ####Category:', priceCategory);
 
-  const sent = await sns.publish({
-    Subject: 'New product imported',
-    Message: JSON.stringify(products),
-    TopicArn: SNS_ARN
-  }).promise();
+    const sent = await sns.publish({
+      Subject: 'New product imported - ' + priceCategory + ' price',
+      Message: JSON.stringify(product),
+      TopicArn: SNS_ARN,
+      MessageAttributes: {
+        'priceCategory': { DataType: 'String', StringValue: priceCategory },
+      },
+    }).promise();
 
-  console.log('####Sent result:', sent);
+    console.log('####Sent result:', sent);
+  }
+
   return {
     Status: 202,
   };
