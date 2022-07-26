@@ -1,0 +1,24 @@
+{
+  "name": "product-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "products.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorpex/aws-nodejs-be.git"
+  },
+  "keywords": [
+    "aws",
+    "api",
+    "backend"
+  ],
+  "author": "Igor Bogdanov @igorpex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igorpex/aws-nodejs-be/issues"
+  },
+  "homepage": "https://github.com/igorpex/aws-nodejs-be#readme"
+}

@@ -14,7 +14,7 @@ const products: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async () => 
     "Content-Type": "application/json;charset=UTF-8",
   }
 
-  console.log('GET request: getProducts');
+console.log('GET request: getProducts');
   const client = new Client(dbConfig);
   try {
     await client.connect();

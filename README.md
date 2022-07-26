@@ -1,5 +1,3 @@
-Task 4 (Integration with Database)
-
 Example Object for POST requests
 {
     "title": "Soccer ball",
@@ -8,4 +6,3 @@ Example Object for POST requests
     "price": 100,
     "count": 10
 },
-
