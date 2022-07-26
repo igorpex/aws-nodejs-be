@@ -60,4 +60,3 @@ const productById: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async ({ 
 };
 
 export const main = middyfy(productById);
-
