@@ -108,7 +108,18 @@ const serverlessConfiguration: AWS = {
           Protocol: 'email',
           TopicArn: { 'Ref': 'SNSTopic' },
         }
-      }
+      },
+      GatewayResponseDefault4XX: {
+        Type: 'AWS::ApiGateway::GatewayResponse',
+        Properties: {
+          ResponseParameters: {
+            'gatewayresponse.header.Access-Control-Allow-Origin': "'*'",
+            'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
+          },
+          ResponseType: 'DEFAULT_4XX',
+          RestApiId: 'lo6ce3r3be',
+        },
+      },
     }
   },
 
