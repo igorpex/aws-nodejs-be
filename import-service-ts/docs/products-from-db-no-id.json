@@ -1,0 +1,79 @@
+[
+    {
+        "title": "Nice Black Dog",
+        "description": "Henry is a great dog and I’m so sad to let him go, but I’m moving overseas and won’t be able to take him with me.",
+        "imageurl": "https://picsum.photos/id/237/300/200",
+        "price": 520,
+        "count": 1
+    },
+    {
+        "title": "Flying car",
+        "description": "The Flying Ford Anglia was used on 3 August 1992 by Fred, George, and Ron Weasley to rescue Harry Potter, who was locked up in his room at the Dursleys",
+        "imageurl": "https://picsum.photos/id/1071/300/200",
+        "price": 2900,
+        "count": 2
+    },
+    {
+        "title": "Old Bicycle",
+        "description": "This is a thing to drive all day then you are young.",
+        "imageurl": "https://picsum.photos/id/146/300/200",
+        "price": 15,
+        "count": 5
+    },
+    {
+        "title": "My School Mac",
+        "description": "The MacBook is a brand of Macintosh laptop computers designed and marketed by Apple Inc.",
+        "imageurl": "https://picsum.photos/id/119/300/200",
+        "price": 315,
+        "count": 3
+    },
+    {
+        "title": "Kind Cat",
+        "description": "The cat loves to play and catch mice",
+        "imageurl": "https://c.wallhere.com/photos/15/4f/2560x1600_px_brick_cat_red_wall-1909581.jpg!s",
+        "price": 190,
+        "count": 3
+    },
+    {
+        "title": "Scooter",
+        "description": "It rolls cool, very fun. Used to play scooter polo.",
+        "imageurl": "https://cdn1.riastatic.com/photosnew/general/adv_photos/children-goods-samokat-micro-rocket-goluboy__102281036b.jpg",
+        "price": 101,
+        "count": 2
+    },
+    {
+        "title": "Broomstick",
+        "description": "Nice speedy stable broomstick. Almost new. Sold due to upgrading to newer model.",
+        "imageurl": "https://static.turbosquid.com/Preview/2015/11/25__13_03_50/Broom.jpgbafea61d-4912-4487-b575-415aeb9974c8Res300.jpg",
+        "price": 100,
+        "count": 5
+    },
+    {
+        "title": "Magic wand",
+        "description": "Powerful magic tool. Can make strong spells. Really good.",
+        "imageurl": "https://media.nauticamilanonline.com/product/varita-magica-harry-potter-hechizos-800x800.jpg",
+        "price": 1200,
+        "count": 10
+    },
+    {
+        "title": "Glasses",
+        "description": "My glasses. No need anymore, now I can see well.",
+        "imageurl": "https://i5.walmartimages.com/asr/0e4ad746-ba16-4da5-8434-f7ef2a92a242_1.2ea6df67360131a23007f323713e06e9.jpeg",
+        "price": 20,
+        "count": 2
+    },
+    {
+        "title": "Snitch",
+        "description": "Fast golden snitch. It took a lot of efforts to get it. Take it!",
+        "imageurl": "https://quizshow.online/aa/wp-content/uploads/2018/11/1449352178150683822.jpg",
+        "price": 200,
+        "count": 4
+    },
+    {
+        "title": "ghdfhg",
+        "description": "dfhdfh",
+        "imageurl": "hgdfhg",
+        "price": 5,
+        "count": 5
+    }
+]

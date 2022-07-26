@@ -1,0 +1,101 @@
+[
+    {
+        "id": "1f9fa292-0b77-4881-9fa4-b265b5dfa87d",
+        "title": "Nice Black Dog",
+        "description": "Henry is a great dog and I’m so sad to let him go, but I’m moving overseas and won’t be able to take him with me.",
+        "imageurl": "https://picsum.photos/id/237/300/200",
+        "price": 520,
+        "product_id": "1f9fa292-0b77-4881-9fa4-b265b5dfa87d",
+        "count": 1
+    },
+    {
+        "id": "fa311480-6408-439b-96cb-27d9b502dcd0",
+        "title": "Flying car",
+        "description": "The Flying Ford Anglia was used on 3 August 1992 by Fred, George, and Ron Weasley to rescue Harry Potter, who was locked up in his room at the Dursleys",
+        "imageurl": "https://picsum.photos/id/1071/300/200",
+        "price": 2900,
+        "product_id": "fa311480-6408-439b-96cb-27d9b502dcd0",
+        "count": 2
+    },
+    {
+        "id": "1d614461-2985-45a3-8476-603dd87bc656",
+        "title": "Old Bicycle",
+        "description": "This is a thing to drive all day then you are young.",
+        "imageurl": "https://picsum.photos/id/146/300/200",
+        "price": 15,
+        "product_id": "1d614461-2985-45a3-8476-603dd87bc656",
+        "count": 5
+    },
+    {
+        "id": "2a27d07c-f6e7-42b1-8f82-2005c286afb5",
+        "title": "My School Mac",
+        "description": "The MacBook is a brand of Macintosh laptop computers designed and marketed by Apple Inc.",
+        "imageurl": "https://picsum.photos/id/119/300/200",
+        "price": 315,
+        "product_id": "2a27d07c-f6e7-42b1-8f82-2005c286afb5",
+        "count": 3
+    },
+    {
+        "id": "26b9848e-8436-4725-96be-1e70435690c2",
+        "title": "Kind Cat",
+        "description": "The cat loves to play and catch mice",
+        "imageurl": "https://c.wallhere.com/photos/15/4f/2560x1600_px_brick_cat_red_wall-1909581.jpg!s",
+        "price": 190,
+        "product_id": "26b9848e-8436-4725-96be-1e70435690c2",
+        "count": 3
+    },
+    {
+        "id": "904e8e59-8ea3-45f3-931d-fd5faadb4b18",
+        "title": "Scooter",
+        "description": "It rolls cool, very fun. Used to play scooter polo.",
+        "imageurl": "https://cdn1.riastatic.com/photosnew/general/adv_photos/children-goods-samokat-micro-rocket-goluboy__102281036b.jpg",
+        "price": 101,
+        "product_id": "904e8e59-8ea3-45f3-931d-fd5faadb4b18",
+        "count": 2
+    },
+    {
+        "id": "89ce63b7-5e71-4dd8-b4a7-8df5fe71ef93",
+        "title": "Broomstick",
+        "description": "Nice speedy stable broomstick. Almost new. Sold due to upgrading to newer model.",
+        "imageurl": "https://static.turbosquid.com/Preview/2015/11/25__13_03_50/Broom.jpgbafea61d-4912-4487-b575-415aeb9974c8Res300.jpg",
+        "price": 100,
+        "product_id": "89ce63b7-5e71-4dd8-b4a7-8df5fe71ef93",
+        "count": 5
+    },
+    {
+        "id": "5c182924-3914-4e73-94f5-7f3826b6d7fd",
+        "title": "Magic wand",
+        "description": "Powerful magic tool. Can make strong spells. Really good.",
+        "imageurl": "https://media.nauticamilanonline.com/product/varita-magica-harry-potter-hechizos-800x800.jpg",
+        "price": 1200,
+        "product_id": "5c182924-3914-4e73-94f5-7f3826b6d7fd",
+        "count": 10
+    },
+    {
+        "id": "0661b093-6095-4b0c-8f88-afbec7293477",
+        "title": "Glasses",
+        "description": "My glasses. No need anymore, now I can see well.",
+        "imageurl": "https://i5.walmartimages.com/asr/0e4ad746-ba16-4da5-8434-f7ef2a92a242_1.2ea6df67360131a23007f323713e06e9.jpeg",
+        "price": 20,
+        "product_id": "0661b093-6095-4b0c-8f88-afbec7293477",
+        "count": 2
+    },
+    {
+        "id": "5821995e-0ed4-4aa5-9735-f8357c2ae2dd",
+        "title": "Snitch",
+        "description": "Fast golden snitch. It took a lot of efforts to get it. Take it!",
+        "imageurl": "https://quizshow.online/aa/wp-content/uploads/2018/11/1449352178150683822.jpg",
+        "price": 200,
+        "product_id": "5821995e-0ed4-4aa5-9735-f8357c2ae2dd",
+        "count": 4
+    },
+    {
+        "id": "17532312-2ed9-40af-80ef-1f280fdbdb52",
+        "title": "ghdfhg",
+        "description": "dfhdfh",
+        "imageurl": "hgdfhg",
+        "price": 5,
+        "product_id": "17532312-2ed9-40af-80ef-1f280fdbdb52",
+        "count": 5
+    }
+]
