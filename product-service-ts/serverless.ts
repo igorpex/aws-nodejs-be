@@ -1,12 +1,12 @@
 import type { AWS } from '@serverless/typescript';
 import 'dotenv/config';
-
 const { PG_HOST, PG_PORT, PG_DATABASE, PG_USERNAME, PG_PASSWORD } = process.env;
-
 import hello from '@functions/hello';
 import products from '@functions/products';
 import productById from '@functions/productById';
+
 import postProduct from '@functions/postProduct';
+
 
 const serverlessConfiguration: AWS = {
   service: 'product-service-ts',
