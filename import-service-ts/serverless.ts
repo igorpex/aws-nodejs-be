@@ -1,47 +1,50 @@
 import type { AWS } from '@serverless/typescript';
 import 'dotenv/config';
-const { PG_HOST, PG_PORT, PG_DATABASE, PG_USERNAME, PG_PASSWORD } = process.env;
-import hello from '@functions/hello';
-import products from '@functions/products';
-import productById from '@functions/productById';
+const BUCKET = process.env.BUCKET;
 
-import postProduct from '@functions/postProduct';
-import putProduct from '@functions/putProduct';
-import deleteProduct from '@functions/deleteProduct';
-
+import importFileParser from '@functions/importFileParser';
+import importProductsFile from '@functions/importProductsFile';
 
 const serverlessConfiguration: AWS = {
-  service: 'product-service-ts',
+  service: 'import-service-ts',
   frameworkVersion: '3',
   plugins: ['serverless-esbuild'],
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
+    region: 'eu-west-1',
+    stage: 'dev',
+    iamRoleStatements: [
+      {
+        Effect: 'Allow',
+        Action: 's3:ListBucket',
+        Resource: `arn:aws:s3:::${BUCKET}`,
+      },
+      {
+        Effect: 'Allow',
+        Action: 's3:*',
+        Resource: `arn:aws:s3:::${BUCKET}/*`
+      }
+    ],
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
     },
-    region: 'eu-west-1',
-    stage: 'dev',
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-      PG_HOST,
-      PG_PORT,
-      PG_DATABASE,
-      PG_USERNAME,
-      PG_PASSWORD,
+      BUCKET,
     },
   },
   // import the function via paths
-  functions: { hello, products, productById, postProduct, putProduct, deleteProduct },
+  functions: { importProductsFile, importFileParser },
   package: { individually: true },
   custom: {
     esbuild: {
       bundle: true,
       minify: false,
       sourcemap: true,
-      exclude: ['aws-sdk', 'pg-native'],
+      exclude: ['aws-sdk'],
       target: 'node16',
       define: { 'require.resolve': undefined },
       platform: 'node',
