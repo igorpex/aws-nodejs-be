@@ -1,3 +1,4 @@
+
 import { handlerPath } from '@libs/handler-resolver';
 
 export default {
@@ -5,8 +6,9 @@ export default {
   events: [
     {
       http: {
-        method: 'get',
-        path: '/products/{productId}',
+        method: 'post',
+        path: '/products',
+        cors: true,
       },
     },
   ],
