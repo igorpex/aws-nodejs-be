@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Set time for cache 2 minutes
-const cache = new NodeCache({ stdTTL: 20 });
+// Set time for cache 2 minutes (120 sec)
+const cache = new NodeCache({ stdTTL: 120 });
 
 // Verify if request with combination of parameters exists in cache
 const verifyCache = (req, res, next) => {
