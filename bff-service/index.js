@@ -12,21 +12,24 @@ app.use(cors());
 app.use(express.json());
 
 // Set time for cache 2 minutes
-const cache = new NodeCache({ stdTTL: 120 });
+const cache = new NodeCache({ stdTTL: 20 });
 
 // Verify if request with combination of parameters exists in cache
 const verifyCache = (req, res, next) => {
   try {
-    const uniqParams = {
-      method: req.method,
-      url: `${req.originalUrl}`,
-      ...(Object.keys(req.body || {}).length > 0 && {data: req.body})
-    };
-    const md5sum = crypto.createHash('md5').update(JSON.stringify(uniqParams)).digest("hex");
-    console.log('md5sum on Verify:', md5sum);
-    if (cache.has(md5sum)) {
-      console.log('Return from cache. md5sum:', md5sum);
-      return res.status(200).json(cache.get(md5sum));
+    if (req.method === 'GET') {
+      const uniqParams = {
+        method: req.method,
+        url: `${req.originalUrl}`,
+        ...(Object.keys(req.body || {}).length > 0 && {data: req.body})
+      };
+      const md5sum = crypto.createHash('md5').update(JSON.stringify(uniqParams)).digest("hex");
+      console.log('md5sum on Verify:', md5sum);
+      if (cache.has(md5sum)) {
+        console.log('Return from cache. md5sum:', md5sum);
+        return res.status(200).json(cache.get(md5sum));
+      }
+      return next();
     }
     return next();
   } catch (err) {
@@ -47,15 +50,17 @@ app.all('/*', verifyCache, (req, res) => {
 
     axios(axiosConfig)
         .then((response) => {
-          // Save answer to cache
-          const uniqParams = {
-            method: req.method,
-            url: `${req.originalUrl}`,
-            ...(Object.keys(req.body || {}).length > 0 && {data: req.body})
-          };
-          const md5sum = crypto.createHash('md5').update(JSON.stringify(uniqParams)).digest("hex");
-          console.log('md5sum before cache.set:', md5sum);
-          cache.set(md5sum, response.data);
+          // Save answer to cache (applied to GET requests only)
+          if (req.method === 'GET') {
+              const uniqParams = {
+              method: req.method,
+              url: `${req.originalUrl}`,
+              ...(Object.keys(req.body || {}).length > 0 && {data: req.body})
+            };
+            const md5sum = crypto.createHash('md5').update(JSON.stringify(uniqParams)).digest("hex");
+            console.log('md5sum before cache.set:', md5sum);
+            cache.set(md5sum, response.data);
+          }
           // Response with result
           res.json(response.data)})
         .catch(error => {
