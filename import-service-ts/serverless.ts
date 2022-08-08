@@ -3,6 +3,7 @@ import 'dotenv/config';
 // const BUCKET = process.env.BUCKET;
 const BUCKET = 'node-in-aws-catalog2'
 const QUEUE_NAME = 'catalogItemsQueue';
+const { PG_HOST, PG_PORT, PG_DATABASE, PG_USERNAME, PG_PASSWORD } = process.env;
 
 import importFileParser from '@functions/importFileParser';
 import importProductsFile from '@functions/importProductsFile';
@@ -52,6 +53,11 @@ const serverlessConfiguration: AWS = {
       SQS_NAME: { 'Fn::GetAtt': ['SQSQueue', 'QueueName'] },
       SQS_ARN: { 'Fn::GetAtt': ['SQSQueue', 'Arn'] },
       SNS_ARN: { 'Ref': 'SNSTopic' },
+      PG_HOST,
+      PG_PORT,
+      PG_DATABASE,
+      PG_USERNAME,
+      PG_PASSWORD,
     },
   },
   // import the function via paths
@@ -83,32 +89,7 @@ const serverlessConfiguration: AWS = {
           TopicArn: { 'Ref': 'SNSTopic' },
         }
       },
-      SNSSubscription2: {
-        Type: 'AWS::SNS::Subscription',
-        Properties: {
-          Endpoint: 'sns-email-1@mailforspam.com',
-          FilterPolicy: {
-            "priceCategory": [
-              "good"
-            ]
-          },
-          Protocol: 'email',
-          TopicArn: { 'Ref': 'SNSTopic' },
-        }
-      },
-      SNSSubscription3: {
-        Type: 'AWS::SNS::Subscription',
-        Properties: {
-          Endpoint: 'sns-email-2@mailforspam.com',
-          FilterPolicy: {
-            "priceCategory": [
-              "bad"
-            ]
-          },
-          Protocol: 'email',
-          TopicArn: { 'Ref': 'SNSTopic' },
-        }
-      },
+
       GatewayResponseDefault4XX: {
         Type: 'AWS::ApiGateway::GatewayResponse',
         Properties: {
@@ -117,7 +98,7 @@ const serverlessConfiguration: AWS = {
             'gatewayresponse.header.Access-Control-Allow-Headers': "'*'",
           },
           ResponseType: 'DEFAULT_4XX',
-          RestApiId: 'lo6ce3r3be',
+          RestApiId: { 'Ref': 'ApiGatewayRestApi' },
         },
       },
     }
@@ -129,7 +110,7 @@ const serverlessConfiguration: AWS = {
       bundle: true,
       minify: false,
       sourcemap: true,
-      exclude: ['aws-sdk'],
+      exclude: ['aws-sdk', 'pg-native'],
       target: 'node16',
       define: { 'require.resolve': undefined },
       platform: 'node',
